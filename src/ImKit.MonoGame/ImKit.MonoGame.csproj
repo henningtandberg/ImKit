@@ -4,6 +4,7 @@
         <TargetFramework>net10.0</TargetFramework>
         <RootNamespace>ImKit.MonoGame</RootNamespace>
         <AssemblyName>ImKit.MonoGame</AssemblyName>
+        <Nullable>enable</Nullable>
         <!-- The renderer copies ImGui vertex/index data with raw pointers. -->
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>

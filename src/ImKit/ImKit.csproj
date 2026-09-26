@@ -4,6 +4,7 @@
         <TargetFramework>net10.0</TargetFramework>
         <RootNamespace>ImKit</RootNamespace>
         <AssemblyName>ImKit</AssemblyName>
+        <Nullable>enable</Nullable>
         <!-- Ship the XML doc file for consumer IntelliSense, but don't demand a doc
              comment on every public member. -->
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
