@@ -430,3 +430,6 @@ FodyWeavers.xsd
 
 **/.idea/
 **/.DS_Store
+
+# Dear ImGui layout state written at runtime
+imgui.ini
