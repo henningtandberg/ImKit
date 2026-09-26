@@ -1,0 +1,41 @@
+name: "Publish to NuGet Gallery"
+
+on:
+  release:
+    types: [published]
+
+env:
+  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
+  NUGET_SOURCE_URL: "'https://api.nuget.org/v3/index.json'"
+
+jobs:
+  publish:
+    name: "Publish to NuGet Gallery"
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        package:
+          - name: "ImKit"
+            path: "./src/ImKit/ImKit.csproj"
+          - name: "ImKit.MonoGame"
+            path: "./src/ImKit.MonoGame/ImKit.MonoGame.csproj"
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+
+      - name: "Install Dotnet"
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: "Restore packages"
+        run: dotnet restore ${{ matrix.package.path }}
+
+      - name: "Build project"
+        run: dotnet build ${{ matrix.package.path }} --no-restore --configuration Release
+
+      - name: "Pack project"
+        run: dotnet pack ${{ matrix.package.path }} -p:PackageVersion=${{ github.event.release.tag_name }} --no-restore --no-build --configuration Release --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+
+      - name: "Push package"
+        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/${{ matrix.package.name }}.${{ github.event.release.tag_name }}.nupkg -s ${{ env.NUGET_SOURCE_URL }} -k ${{ secrets.NUGET_AUTH_TOKEN }}
