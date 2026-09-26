@@ -20,10 +20,18 @@ services.AddDockSpace<ExampleDockSpace>();
 services.AddGuiWidget<DemoWindowWidget>();
 services.AddGuiWidget<MainMenuWidget>();
 services.AddGuiWidget<FileTreeWidget>();
+services.AddGuiWidget<ScopesWidget>();
 services.AddGuiWidget<InspectorWidget>();
 services.AddGuiWidget<LogWidget>();
 
 using var provider = services.BuildServiceProvider();
+
+// Optional: start with a folder already open, skipping the picker.
+if (args.Length > 0)
+{
+    provider.GetRequiredService<AppState>().OpenFolder(args[0]);
+}
+
 using var game = provider.GetRequiredService<ExampleGame>();
 
 game.Run();
