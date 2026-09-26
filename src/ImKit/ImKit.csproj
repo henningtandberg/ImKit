@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <RootNamespace>ImKit</RootNamespace>
+        <AssemblyName>ImKit</AssemblyName>
+        <!-- Ship the XML doc file for consumer IntelliSense, but don't demand a doc
+             comment on every public member. -->
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);CS1591</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>ImKit</PackageId>
+        <Version>0.1.0</Version>
+        <Authors>Henning Tandberg</Authors>
+        <Description>Backend-agnostic building blocks for Dear ImGui editors in .NET: scope-based ImGui.NET extension members, a widget/dock-space host, a DockBuilder binding, and reusable file-system components.</Description>
+        <PackageTags>imgui;dear-imgui;imgui.net;gui;editor;tools;immediate-mode</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageProjectUrl>https://github.com/henningtandberg/ImKit</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/henningtandberg/ImKit</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <Deterministic>true</Deterministic>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="ImGui.NET" Version="1.91.6.1"/>
+    </ItemGroup>
+
+</Project>

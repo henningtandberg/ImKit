@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <RootNamespace>ImKit.MonoGame</RootNamespace>
+        <AssemblyName>ImKit.MonoGame</AssemblyName>
+        <!-- The renderer copies ImGui vertex/index data with raw pointers. -->
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);CS1591</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>ImKit.MonoGame</PackageId>
+        <Version>0.1.0</Version>
+        <Authors>Henning Tandberg</Authors>
+        <Description>MonoGame backend for ImKit: a Dear ImGui renderer for MonoGame/FNA, texture binding, and dependency-injection wiring.</Description>
+        <PackageTags>imgui;dear-imgui;imgui.net;monogame;fna;gui;editor;tools;immediate-mode</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageProjectUrl>https://github.com/henningtandberg/ImKit</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/henningtandberg/ImKit</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <Deterministic>true</Deterministic>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2"/>
+        <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.5"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\ImKit\ImKit.csproj"/>
+    </ItemGroup>
+
+</Project>
